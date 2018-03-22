@@ -1,0 +1,24 @@
+{
+  "extends": "solium:all",
+  "plugins": [
+    "security"
+  ],
+  "rules": {
+    "arg-overflow": [
+      "warning",
+      3
+    ],
+    "blank-lines": 0,
+    "indentation": [
+      "error",
+      2
+    ],
+    "mixedcase": 0,
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "uppercase": 0,
+    "function-order": 0
+  }
+}
