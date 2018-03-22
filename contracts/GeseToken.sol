@@ -7,7 +7,7 @@ contract GeseToken is MintableToken {
 
   string public constant name = "Gese";
 
-  string public constant symbol = "GESE";
+  string public constant symbol = "GSE";
 
   uint32 public constant decimals = 2;
 
