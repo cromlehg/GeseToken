@@ -22,6 +22,7 @@ Each stage has a direct minting function in wei. This is made to support the ext
 2. _PreITO_ - PreITO contract
 3. _ITO_ - ITO contract
 4. _Configurator_ - contract with main configuration for production
+5. _TokenDistributor_ - airdrop support contract
 
 ### How to manage contract
 To start working with contract you should follow next steps:
@@ -52,6 +53,9 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Team tokens percent_         : 10%
 * _Reserved tokens percent_     : 10%
 * _For sale tokens percent_     : 65%
+
+## AirDrop feature
+* Contains airdrop support contracts
 
 ## Main network configuration
 
