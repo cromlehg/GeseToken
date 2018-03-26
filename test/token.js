@@ -4,20 +4,20 @@ import mintable from './token/mintable';
 import ownable from './token/ownable';
 import standard from './token/standard';
 
-const token = artifacts.require('BuyAndSellToken.sol');
+const token = artifacts.require('GeseToken.sol');
 
-contract('BuyAndSellToken - BasicToken test', function (accounts) {
+contract('GeseToken - BasicToken test', function (accounts) {
   basic(token, accounts);
 });
-contract('BuyAndSellToken - StandardToken test', function (accounts) {
+contract('GeseToken - StandardToken test', function (accounts) {
   standard(token, accounts);
 });
-contract('BuyAndSellToken - Mintable test', function (accounts) {
+contract('GeseToken - Mintable test', function (accounts) {
   mintable(token, accounts);
 });
-contract('BuyAndSellToken - Ownable test', function (accounts) {
+contract('GeseToken - Ownable test', function (accounts) {
   ownable(token, accounts);
 });
-contract('BuyAndSellToken - Additional conditions test', function (accounts) {
+contract('GeseToken - Additional conditions test', function (accounts) {
   additional(token, accounts);
 });
