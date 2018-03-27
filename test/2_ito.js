@@ -7,6 +7,7 @@ import capped from './ito/capped';
 import common from './ito/common';
 import milestonebonus from './ito/milestonebonus';
 import bounty from './ito/bounty';
+import refererbonus from './ito/refererbonus';
 import additional from './ito/additional';
 
 const token = artifacts.require('GeseToken.sol');
@@ -32,6 +33,11 @@ contract('ITO - bounty test', function (accounts) {
   bounty(token, crowdsale, accounts);
 });
 
+contract('ITO - referer bonus crowdsale test', function (accounts) {
+  before(config);
+  refererbonus(token, crowdsale, accounts);
+});
+
 contract('ITO - additional features test', function (accounts) {
   before(config);
   additional(token, crowdsale, accounts);
@@ -53,6 +59,8 @@ function config() {
   this.AdvisorsTokensPercent = 10;
   this.TeamTokensPercent = 10;
   this.ReservedTokensPercent = 10;
+  this.refererPercent = 5;
+  this.referalsMinInvestLimit = ether(0.1);
 
   // variables for additional testing convinience
   this.end = this.start + duration.days(this.period);

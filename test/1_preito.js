@@ -6,6 +6,7 @@ import {duration} from './helpers/increaseTime';
 import capped from './preito/capped';
 import common from './preito/common';
 import refundable from './preito/refundable';
+import refererbonus from './preito/refererbonus';
 import additional from './preito/additional';
 
 const token = artifacts.require('GeseToken.sol');
@@ -26,6 +27,11 @@ contract('PreITO - refundable crowdsale test', function (accounts) {
   refundable(token, crowdsale, accounts);
 });
 
+contract('PreITO - referer bonus crowdsale test', function (accounts) {
+  before(config);
+  refererbonus(token, crowdsale, accounts);
+});
+
 contract('PreITO - additional features test', function (accounts) {
   before(config);
   additional(token, crowdsale, accounts);
@@ -40,6 +46,8 @@ function config() {
   this.hardcap = ether(3818);
   this.minInvestedLimit = ether(0.1);
   this.wallet = '0xa86780383E35De330918D8e4195D671140A60A74';
+  this.refererPercent = 5;
+  this.referalsMinInvestLimit = ether(0.1);
 
   // variables for additional testing convinience
   this.end = this.start + duration.days(this.period);
