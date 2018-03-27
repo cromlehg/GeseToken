@@ -26,12 +26,11 @@ export default function (Token, Crowdsale, wallets) {
     await token.setSaleAgent(crowdsale.address);
     await crowdsale.setToken(token.address);
     await crowdsale.setStart(this.start);
+    await crowdsale.setPeriod(this.period);
     await crowdsale.setPrice(this.price);
     await crowdsale.setSoftcap(this.softcap);
     await crowdsale.setHardcap(this.hardcap);
     await crowdsale.setMinInvestedLimit(this.minInvestedLimit);
-    await crowdsale.addMilestone(1, 40);
-    await crowdsale.addMilestone(13, 30);
     await crowdsale.setWallet(this.wallet);
   });
 
@@ -66,7 +65,7 @@ export default function (Token, Crowdsale, wallets) {
   it('should assign tokens to sender', async function () {
     await crowdsale.sendTransaction({value: ether(1), from: wallets[3]});
     const balance = await token.balanceOf(wallets[3]);
-    balance.should.be.bignumber.equal(this.price.times(1.4));
+    balance.should.be.bignumber.equal(this.price.times(1));
   });
 
   it('should reject payments after end', async function () {
