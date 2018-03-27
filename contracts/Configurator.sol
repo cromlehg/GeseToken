@@ -20,32 +20,37 @@ contract Configurator is Ownable {
     preITO = new PreITO();
 
     preITO.setWallet(0xa86780383E35De330918D8e4195D671140A60A74);
-    preITO.setStart(1518393600);
-    preITO.setPrice(9000000000000000000000);
+    preITO.setStart(1522540800);
+    preITO.setPeriod(30);
+    preITO.setPrice(786700);
     preITO.setMinInvestedLimit(100000000000000000);
     preITO.setToken(token);
-    preITO.setHardcap(16000000000000000000000);
-    preITO.setSoftcap(500000000000000000000);
+    preITO.setHardcap(3818000000000000000000);
+    preITO.setSoftcap(3640000000000000000000);
 
     token.setSaleAgent(preITO);
 
     ito = new ITO();
 
-    ito.addMilestone(7, 25);
-    ito.addMilestone(7, 15);
-    ito.addMilestone(14, 10);
+    ito.addMilestone(5, 33);
+    ito.addMilestone(5, 18);
+    ito.addMilestone(5, 11);
+    ito.addMilestone(5, 5);
+    ito.addMilestone(5, 0);
     ito.setMinInvestedLimit(100000000000000000);
     ito.setToken(token);
-    ito.setPrice(4500000000000000000000);
+    ito.setPrice(550000);
     ito.setWallet(0x98882D176234AEb736bbBDB173a8D24794A3b085);
     ito.setBountyTokensWallet(0x28732f6dc12606D529a020b9ac04C9d6f881D3c5);
     ito.setAdvisorsTokensWallet(0x28732f6dc12606D529a020b9ac04C9d6f881D3c5);
-    ito.setDevelopersTokensWallet(0x28732f6dc12606D529a020b9ac04C9d6f881D3c5);
-    ito.setStart(1520640000);
-    ito.setHardcap(24000000000000000000000);
-    ito.setAdvisorsTokensPercent(2);
-    ito.setBountyTokensPercent(3);
-    ito.setDevelopersTokensPercent(20);
+    ito.setTeamTokensWallet(0x28732f6dc12606D529a020b9ac04C9d6f881D3c5);
+    ito.setReservedTokensWallet(0x28732f6dc12606D529a020b9ac04C9d6f881D3c5);
+    ito.setStart(1525910400);
+    ito.setHardcap(49090000000000000000000);
+    ito.setBountyTokensPercent(5);
+    ito.setAdvisorsTokensPercent(10);
+    ito.setTeamTokensPercent(10);
+    ito.setReservedTokensPercent(10);
 
     preITO.setNextSaleAgent(ito);
 
