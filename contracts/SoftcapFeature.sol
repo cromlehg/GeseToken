@@ -16,18 +16,12 @@ contract SoftcapFeature is InvestedProvider, WalletProvider {
 
   uint public softcap;
 
-  uint public constant devLimit = 4500000000000000000;
-
-  address public constant devWallet = 0xEA15Adb66DC92a4BbCcC8Bf32fd25E2e86a2A770;
-
   function setSoftcap(uint newSoftcap) public onlyOwner {
     softcap = newSoftcap;
   }
 
-  function withdraw() public {
-    require(msg.sender == owner || msg.sender == devWallet);
+  function withdraw() public onlyOwner{
     require(softcapAchieved);
-    devWallet.transfer(devLimit);
     wallet.transfer(this.balance);
   }
 

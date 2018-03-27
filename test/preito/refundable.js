@@ -80,7 +80,6 @@ export default function (Token, Crowdsale, wallets) {
     const pre = web3.eth.getBalance(this.wallet);
     await crowdsale.finish({from: owner}).should.be.fulfilled;
     const post = web3.eth.getBalance(this.wallet);
-    const dev = web3.eth.getBalance('0xEA15Adb66DC92a4BbCcC8Bf32fd25E2e86a2A770');
-    post.minus(pre).plus(dev).should.be.bignumber.equal(investment);
+    post.minus(pre).should.be.bignumber.equal(investment);
   });
 }
