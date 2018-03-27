@@ -35,9 +35,4 @@ contract PreITO is NextSaleAgentFeature, SoftcapFeature, ReferersCommonSale {
     }
   }
 
-  function fallback() internal minInvestLimited(msg.value) returns(uint) {
-    require(now >= start && now < endSaleDate());
-    return mintTokensByETH(msg.sender, msg.value);
-  }
-
 }
