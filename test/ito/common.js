@@ -29,16 +29,20 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.setPrice(this.price);
     await crowdsale.setHardcap(this.hardcap);
     await crowdsale.setMinInvestedLimit(this.minInvestedLimit);
-    await crowdsale.addMilestone(7, 25);
-    await crowdsale.addMilestone(7, 15);
-    await crowdsale.addMilestone(14, 10);
+    await crowdsale.addMilestone(5, 33);
+    await crowdsale.addMilestone(5, 18);
+    await crowdsale.addMilestone(5, 11);
+    await crowdsale.addMilestone(5, 5);
+    await crowdsale.addMilestone(5, 0);
     await crowdsale.setWallet(this.wallet);
     await crowdsale.setBountyTokensWallet(this.BountyTokensWallet);
     await crowdsale.setAdvisorsTokensWallet(this.AdvisorsTokensWallet);
-    await crowdsale.setDevelopersTokensWallet(this.DevelopersTokensWallet);
+    await crowdsale.setTeamTokensWallet(this.TeamTokensWallet);
+    await crowdsale.setReservedTokensWallet(this.ReservedTokensWallet);
     await crowdsale.setBountyTokensPercent(this.BountyTokensPercent);
     await crowdsale.setAdvisorsTokensPercent(this.AdvisorsTokensPercent);
-    await crowdsale.setDevelopersTokensPercent(this.DevelopersTokensPercent);
+    await crowdsale.setTeamTokensPercent(this.TeamTokensPercent);
+    await crowdsale.setReservedTokensPercent(this.ReservedTokensPercent);
   });
 
   it('crowdsale should be a saleAgent for token', async function () {
@@ -72,7 +76,7 @@ export default function (Token, Crowdsale, wallets) {
   it('should assign tokens to sender', async function () {
     await crowdsale.sendTransaction({value: ether(1), from: wallets[3]});
     const balance = await token.balanceOf(wallets[3]);
-    balance.should.be.bignumber.equal(this.price.times(1.25));
+    balance.should.be.bignumber.equal(this.price.times(1.33));
   });
 
   it('should reject payments after end', async function () {

@@ -28,20 +28,24 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.setPrice(this.price);
     await crowdsale.setHardcap(this.hardcap);
     await crowdsale.setMinInvestedLimit(this.minInvestedLimit);
-    await crowdsale.addMilestone(7, 25);
-    await crowdsale.addMilestone(7, 15);
-    await crowdsale.addMilestone(14, 10);
+    await crowdsale.addMilestone(5, 33);
+    await crowdsale.addMilestone(5, 18);
+    await crowdsale.addMilestone(5, 11);
+    await crowdsale.addMilestone(5, 5);
+    await crowdsale.addMilestone(5, 0);
     await crowdsale.setWallet(this.wallet);
     await crowdsale.setBountyTokensWallet(wallets[3]);
     await crowdsale.setAdvisorsTokensWallet(wallets[4]);
-    await crowdsale.setDevelopersTokensWallet(wallets[5]);
+    await crowdsale.setTeamTokensWallet(wallets[5]);
+    await crowdsale.setReservedTokensWallet(wallets[6]);
     await crowdsale.setBountyTokensPercent(this.BountyTokensPercent);
     await crowdsale.setAdvisorsTokensPercent(this.AdvisorsTokensPercent);
-    await crowdsale.setDevelopersTokensPercent(this.DevelopersTokensPercent);
+    await crowdsale.setTeamTokensPercent(this.TeamTokensPercent);
+    await crowdsale.setReservedTokensPercent(this.ReservedTokensPercent);
 
   });
 
-  it('should correctly calculate bonuses for founders and bounty', async function () {
+  it('should correctly calculate bonuses', async function () {
     await crowdsale.sendTransaction({value: ether(1), from: wallets[1]});
     await crowdsale.sendTransaction({value: ether(99), from: wallets[2]});
     const owner = await crowdsale.owner();
@@ -51,14 +55,18 @@ export default function (Token, Crowdsale, wallets) {
     const secondInvestorTokens = await token.balanceOf(wallets[2]);
     const bountyTokens = await token.balanceOf(wallets[3]);
     const advisorsTokens = await token.balanceOf(wallets[4]);
-    const developersTokens = await token.balanceOf(wallets[5]);
+    const teamTokens = await token.balanceOf(wallets[5]);
+    const reservedTokens = await token.balanceOf(wallets[6]);
     const totalTokens = firstInvestorTokens
       .plus(secondInvestorTokens)
       .plus(bountyTokens)
       .plus(advisorsTokens)
-      .plus(developersTokens);
-    assert.equal(bountyTokens.div(totalTokens), this.BountyTokensPercent / 100);
-    assert.equal(advisorsTokens.div(totalTokens), this.AdvisorsTokensPercent / 100);
-    assert.equal(developersTokens.div(totalTokens), this.DevelopersTokensPercent / 100);
+      .plus(teamTokens)
+      .plus(reservedTokens);
+
+    assert.equal(Math.round(bountyTokens.mul(100).div(totalTokens)), this.BountyTokensPercent);
+    assert.equal(Math.round(advisorsTokens.mul(100).div(totalTokens)), this.AdvisorsTokensPercent);
+    assert.equal(Math.round(teamTokens.mul(100).div(totalTokens)), this.TeamTokensPercent);
+    assert.equal(Math.round(reservedTokens.mul(100).div(totalTokens)), this.ReservedTokensPercent);
   });
 }
