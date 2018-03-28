@@ -42,6 +42,8 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.setAdvisorsTokensPercent(this.AdvisorsTokensPercent);
     await crowdsale.setTeamTokensPercent(this.TeamTokensPercent);
     await crowdsale.setReservedTokensPercent(this.ReservedTokensPercent);
+    await crowdsale.setRefererPercent(this.refererPercent);
+    await crowdsale.setReferalsMinInvestLimit(this.referalsMinInvestLimit);
   });
 
   it('should add referer bonus', async function () {	
