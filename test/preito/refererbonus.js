@@ -36,14 +36,20 @@ export default function (Token, Crowdsale, wallets) {
   });
 
   it('should add referer bonus', async function () {	
-    await crowdsale.sendTransaction({value: ether(1), from: wallets[6], data: wallets[5]});	
+    await crowdsale.sendTransaction({value: ether(1), from: wallets[6], data: wallets[5]}).should.be.fulfilled;	
     const refbalance = await token.balanceOf(wallets[5]);
     const balance = await token.balanceOf(wallets[6]);	
     refbalance.should.be.bignumber.equal(balance * 0.05);
   });
+
+  it('should not add referer bonus if investment less then min', async function () { 
+    await crowdsale.sendTransaction({value: ether(0.1), from: wallets[6], data: wallets[5]}).should.be.fulfilled; 
+    const refbalance = await token.balanceOf(wallets[5]);
+    refbalance.should.be.bignumber.equal(0);
+  });
   
    it('should works normal if referer is not specified', async function () {  
-    await crowdsale.sendTransaction({value: ether(1), from: wallets[6], data: ''}).should.be.fulfilled;; 
+    await crowdsale.sendTransaction({value: ether(1), from: wallets[6], data: ''}).should.be.fulfilled; 
     const balance = await token.balanceOf(wallets[6]);
     balance.should.be.bignumber.equal(this.price.times(1));	
   }); 

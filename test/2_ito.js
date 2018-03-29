@@ -60,7 +60,7 @@ function config() {
   this.TeamTokensPercent = 10;
   this.ReservedTokensPercent = 10;
   this.refererPercent = 5;
-  this.referalsMinInvestLimit = ether(0.1);
+  this.referalsMinInvestLimit = ether(1);
 
   // variables for additional testing convinience
   this.end = this.start + duration.days(this.period);
