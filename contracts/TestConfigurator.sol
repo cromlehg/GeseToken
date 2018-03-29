@@ -63,7 +63,7 @@ contract TestConfigurator is Ownable {
   function deploy() public onlyOwner {
     preITO.setWallet(0x8fD94be56237EA9D854B23B78615775121Dd1E82);
     preITO.setStart(1522108800);
-    preITO.setPeriod(30);
+    preITO.setPeriod(15);
     preITO.setPrice(786700);
     preITO.setMinInvestedLimit(100000000000000000);
     preITO.setHardcap(3818000000000000000000);
@@ -80,7 +80,7 @@ contract TestConfigurator is Ownable {
     ito.addMilestone(5, 18);
     ito.addMilestone(5, 11);
     ito.addMilestone(5, 5);
-    ito.addMilestone(5, 0);
+    ito.addMilestone(10, 0);
     ito.setPrice(550000);
     ito.setMinInvestedLimit(100000000000000000);
     ito.setHardcap(49090000000000000000000);

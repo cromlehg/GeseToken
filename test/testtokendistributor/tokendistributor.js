@@ -40,7 +40,7 @@ export default function (Token, Crowdsale, TokenDistributor, wallets) {
     await crowdsale.addMilestone(5, 18);
     await crowdsale.addMilestone(5, 11);
     await crowdsale.addMilestone(5, 5);
-    await crowdsale.addMilestone(5, 0);
+    await crowdsale.addMilestone(10, 0);
     await crowdsale.setWallet(this.wallet);
     await crowdsale.setBountyTokensWallet(this.BountyTokensWallet);
     await crowdsale.setAdvisorsTokensWallet(this.AdvisorsTokensWallet);
@@ -70,7 +70,27 @@ export default function (Token, Crowdsale, TokenDistributor, wallets) {
 
     balance_1.should.be.bignumber.equal(totalbalance.sub(balance_2).sub(balance_3));
     balance_2.should.be.bignumber.equal(balances[0]);
-    balance_3.should.be.bignumber.equal(balances[1]);
+    balance_3.should.be.bignumber.equal(balances[1]);  
+  });
+
+  it ('should reject if not enough tokens', async function () {
+    await crowdsale.sendTransaction({value: ether(1), from: wallets[1]});
+    await crowdsale.finish({from: wallets[1]});
+
+    const totalbalance = tokens(100);
+    await token.transfer(tokendistributor.address, totalbalance, {from: wallets[1]});
+
+    const receivers = [wallets[2],wallets[3]];
+    const balances = [tokens(100), tokens(200)];
+    await tokendistributor.addReceivers(receivers, balances, {from: wallets[1]}).should.be.rejectedWith(EVMRevert);
+
+    const balance_1 = await token.balanceOf(tokendistributor.address);
+    const balance_2 = await token.balanceOf(wallets[2]);
+    const balance_3 = await token.balanceOf(wallets[3]);
+
+    balance_1.should.be.bignumber.equal(totalbalance);
+    balance_2.should.be.bignumber.equal(0);
+    balance_3.should.be.bignumber.equal(0); 
   });
 
   it ('should retrieve current tokens to owner', async function () {

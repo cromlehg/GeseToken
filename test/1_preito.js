@@ -39,8 +39,8 @@ contract('PreITO - additional features test', function (accounts) {
 
 function config() {
   // variables list based on info from README
-  this.start = unixTime('01 Apr 2018 00:00:00 GMT');
-  this.period = 30;
+  this.start = unixTime('15 May 2018 00:00:00 GMT');
+  this.period = 15;
   this.price = tokens(7867);
   this.softcap = ether(3640);
   this.hardcap = ether(3818);

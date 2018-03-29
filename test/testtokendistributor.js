@@ -16,8 +16,8 @@ contract('TokenDistributor test', function (accounts) {
 
 function config() {
   // variables list based on info from README
-  this.start = unixTime('10 May 2018 00:00:00 GMT');
-  this.period = 25;
+  this.start = unixTime('01 Jun 2018 00:00:00 GMT');
+  this.period = 30;
   this.price = tokens(5500);
   this.hardcap = ether(49090);
   this.minInvestedLimit = ether(0.1);
@@ -30,6 +30,8 @@ function config() {
   this.AdvisorsTokensPercent = 10;
   this.TeamTokensPercent = 10;
   this.ReservedTokensPercent = 10;
+  this.refererPercent = 5;
+  this.referalsMinInvestLimit = ether(0.1);
 
   // variables for additional testing convinience
   this.end = this.start + duration.days(this.period);

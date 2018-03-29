@@ -82,15 +82,15 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Base price_                  : 1 ETH = 7867 Tokens
 * _Hardcap_                     : 3818 ETH
 * _Softcap_                     : 3640 ETH
-* _Period_                      : 30 days
-* _Start_                       : 
+* _Period_                      : 15 days
+* _Start_                       : 15 May 2018 00:00:00 GMT
 * _Wallet_                      : 
 
 #### ICO
 * _Minimal insvested limit_     : 0.1 ETH
 * _Base price_                  : 1 ETH = 5500 Tokens
 * _Hardcap_                     : 49 090 ETH
-* _Start_                       : 
+* _Start_                       : 01 Jun 2018 00:00:00 GMT
 * _Wallet_                      : 
  
 ##### Milestones
@@ -98,7 +98,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 2. 5 days, bonus +18%
 3. 5 days, bonus +11% 
 4. 5 days, bonus +5% 
-5. 5 without bonus 
+5. 10 without bonus 
 
 
 

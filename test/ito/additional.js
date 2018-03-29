@@ -32,7 +32,7 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.addMilestone(5, 18);
     await crowdsale.addMilestone(5, 11);
     await crowdsale.addMilestone(5, 5);
-    await crowdsale.addMilestone(5, 0);
+    await crowdsale.addMilestone(10, 0);
     await crowdsale.setWallet(this.wallet);
     await crowdsale.setBountyTokensWallet(this.BountyTokensWallet);
     await crowdsale.setAdvisorsTokensWallet(this.AdvisorsTokensWallet);
