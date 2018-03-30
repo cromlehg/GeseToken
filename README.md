@@ -102,7 +102,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 
 ## Ropsten network configuration 
 
-### links
+### Links
 1. _Token_ - https://ropsten.etherscan.io/address/0x7d764b0ae0e98f661ea42d78e0e6ecc125a2597d
 2. _PreITO_ - https://ropsten.etherscan.io/address/0xaa6593aad0af2a4493b82aa5ef3d2ecfbeec46cf
 3. _ITO_ - https://ropsten.etherscan.io/address/0xae6d324a9b0c6d04ed18c1ca17a1d929e9827d31
@@ -183,7 +183,7 @@ https://ropsten.etherscan.io/tx/0xf8e203e184a7c4affd202055e18fcdf58ce0fd6c4f300f
 * finish, gas = 230389
 https://ropsten.etherscan.io/tx/0xa3ad5439bfe61209ae50feb41ce4d26308369d49cd65b1273471352fb8e8c589
 
-### TokenDistributor
+### Token Distributor
 
 * addReceivers, gas = 92239
 https://ropsten.etherscan.io/tx/0xd56ec9e2cc263d546ead25a3d99552596e3ce28171e9c08baf901405a285b198
