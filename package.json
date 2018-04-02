@@ -22,11 +22,12 @@
   "scripts": {
     "compile": " rm -rf ./build && ./node_modules/.bin/truffle compile",
     "test": "./scripts/test.sh",
-    "flatten-test": "npm run flatten-ito && npm run flatten-preito && npm run flatten-token && npm run flatten-callback && npm run flatten-configurator",
+    "flatten-test": "npm run flatten-ito && npm run flatten-preito && npm run flatten-token && npm run flatten-callback && npm run flatten-tokendistributor && npm run flatten-configurator",
     "flatten-ito": "./node_modules/.bin/truffle-flattener ./contracts/ITO.sol > ./deploy/ITO.sol",
     "flatten-preito": "./node_modules/.bin/truffle-flattener ./contracts/PreITO.sol > ./deploy/PreITO.sol",
     "flatten-token": "./node_modules/.bin/truffle-flattener ./contracts/GeseToken.sol > ./deploy/GeseToken.sol",
     "flatten-callback": "./node_modules/.bin/truffle-flattener ./contracts/CallbackTest.sol > ./deploy/CallbackTest.sol",
+    "flatten-tokendistributor": "./node_modules/.bin/truffle-flattener ./contracts/TokenDistributor.sol > ./deploy/TokenDistributor.sol",
     "flatten-configurator": "./node_modules/.bin/truffle-flattener ./contracts/TestConfigurator.sol > ./deploy/TestConfigurator.sol"
   },
   "repository": {
