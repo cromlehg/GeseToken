@@ -66,9 +66,9 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Contracts manager_           :
 
 ### Links
-1. _Token_ -
-2. _PreITO_ -
-3. _ITO_ -
+1. _Token_ - https://etherscan.io/token/0x981c00655758fe2b2d6b070718a6d9e6d71a30b6
+2. _PreITO_ - https://etherscan.io/address/0x1998b337ca479a623299a76bdafdf75b41070b79
+3. _ITO_ - https://etherscan.io/address/0xae68a9a9d2cb999b5392bea198147127bd3a6d33
 
 ### Features
 * Manually mint tokens by owner or sale agent at any time until token minting finished. 
@@ -90,7 +90,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Minimal insvested limit_     : 0.1 ETH
 * _Base price_                  : 1 ETH = 5500 Tokens
 * _Hardcap_                     : 49 090 ETH
-* _Start_                       : 01 Jun 2018 00:00:00 GMT
+* _Start_                       : 01 Jul 2018 00:00:00 GMT
 * _Wallet_                      : 
  
 ##### Milestones
