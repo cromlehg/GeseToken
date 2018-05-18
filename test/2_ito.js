@@ -45,7 +45,7 @@ contract('ITO - additional features test', function (accounts) {
 
 function config() {
   // variables list based on info from README
-  this.start = unixTime('01 Jun 2018 00:00:00 GMT');
+  this.start = unixTime('15 Jun 2018 00:00:00 GMT');
   this.period = 30;
   this.price = tokens(5500);
   this.hardcap = ether(49090);
