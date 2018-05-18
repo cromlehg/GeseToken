@@ -58,7 +58,7 @@ contract Configurator is Ownable {
 
     preITO.setNextSaleAgent(ito);
 
-    address manager = 0x675eDE27cafc8Bd07bFCDa6fEF6ac25031c74766;
+    address manager = 0xEA15Adb66DC92a4BbCcC8Bf32fd25E2e86a2A770;
 
     token.transferOwnership(manager);
     preITO.transferOwnership(manager);

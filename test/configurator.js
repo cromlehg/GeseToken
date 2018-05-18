@@ -21,7 +21,7 @@ contract('Configurator integration test', function (accounts) {
   let preito;
   let ito;
 
-  const manager = '0x675eDE27cafc8Bd07bFCDa6fEF6ac25031c74766';
+  const manager = '0xEA15Adb66DC92a4BbCcC8Bf32fd25E2e86a2A770';
 
   before(async function () {
     // Advance to the next block to correctly read time in the solidity "now" function interpreted by testrpc
