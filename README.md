@@ -5,7 +5,7 @@
 * _Standard_        : [ERC20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md)
 * _[Name](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#name)_            : Gese 
 * _[Ticker](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#symbol)_          : GSE
-* _[Decimals](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#decimals)_        : 18
+* _[Decimals](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#decimals)_        : 2
 * _Emission_        : Mintable
 * _Crowdsales_      : 2
 * _Fiat dependency_ : No
