@@ -62,4 +62,16 @@ export default function (Token, Crowdsale, wallets) {
     const balance = await token.balanceOf(wallets[6]);
     balance.should.bignumber.equal(tokens(100));
   });
+
+  it('should transfer from unlocked address accounts during crowdsale', async function () {
+    const owner = await crowdsale.owner();
+    await crowdsale.sendTransaction({value: ether(1), from: wallets[7]});
+    await crowdsale.sendTransaction({value: ether(1), from: wallets[8]});
+    await token.unclockAddressDuringITO(wallets[7], {from: owner});    
+    await token.transfer(wallets[9], 100, {from: wallets[7]}).should.be.fulfilled;
+    await token.transfer(wallets[9], 100, {from: wallets[8]}).should.be.rejectedWith(EVMRevert);
+    const balance = await token.balanceOf(wallets[9]);
+    assert.equal(balance, 100);
+  });
+
 }

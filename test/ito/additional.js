@@ -66,7 +66,7 @@ export default function (Token, Crowdsale, wallets) {
     balance.should.bignumber.equal(tokens(100));
   });
 
-   it('should mintTokensExternal by Direct Mint Agent', async function () {
+  it('should mintTokensExternal by Direct Mint Agent', async function () {
     const owner = await crowdsale.owner();
     await crowdsale.setDirectMintAgent(wallets[3], {from: owner});
     await crowdsale.mintTokensExternal(wallets[6], tokens(100), {from: wallets[3]}).should.be.fulfilled;
@@ -82,4 +82,62 @@ export default function (Token, Crowdsale, wallets) {
     const post = web3.eth.getBalance(this.wallet);
     post.minus(pre).should.bignumber.equal(investment);
   });
+
+  it('should mintTokensExternal and lock tokens depends on LockAfterManuallyMint', async function () {
+    const owner = await crowdsale.owner();
+    await crowdsale.mintTokensExternal(wallets[9], tokens(100), {from: owner});
+    await crowdsale.setLockAfterManuallyMint(false, {from: owner});
+    await crowdsale.mintTokensExternal(wallets[10], tokens(100), {from: owner});
+    await crowdsale.finish({from: owner});
+    await token.transfer(wallets[5], tokens(100), {from: wallets[9]}).should.be.rejectedWith(EVMRevert);
+    await token.transfer(wallets[5], tokens(100), {from: wallets[10]}).should.be.fulfilled;
+  });
+
+  it('should mintTokensByETHExternal and lock tokens depends on LockAfterManuallyMint', async function () {
+    const owner = await crowdsale.owner();
+    await crowdsale.mintTokensByETHExternal(wallets[9], ether(1), {from: owner});
+    await crowdsale.setLockAfterManuallyMint(false, {from: owner});
+    await crowdsale.mintTokensByETHExternal(wallets[10], ether(1), {from: owner});
+    await crowdsale.finish({from: owner});
+    await token.transfer(wallets[5], tokens(100), {from: wallets[9]}).should.be.rejectedWith(EVMRevert);
+    await token.transfer(wallets[5], tokens(100), {from: wallets[10]}).should.be.fulfilled;
+  });
+
+  it('should transfer from unlocked address accounts during crowdsale', async function () {
+    const owner = await crowdsale.owner();
+    await crowdsale.sendTransaction({value: ether(1), from: wallets[7]});
+    await crowdsale.sendTransaction({value: ether(1), from: wallets[8]});
+    await token.unclockAddressDuringITO(wallets[7], {from: owner});    
+    await token.transfer(wallets[9], 100, {from: wallets[7]}).should.be.fulfilled;
+    await token.transfer(wallets[9], 100, {from: wallets[8]}).should.be.rejectedWith(EVMRevert);
+    const balance = await token.balanceOf(wallets[9]);
+    assert.equal(balance, 100);
+  });
+
+  it('should transfer from unlocked address accounts after crowdsale', async function () {
+    const owner = await crowdsale.owner();
+    await crowdsale.sendTransaction({value: ether(1), from: wallets[7]});
+    await crowdsale.sendTransaction({value: ether(1), from: wallets[8]});
+    await crowdsale.finish({from: owner});
+    await token.unlockAddressAfterITO(wallets[7], {from: owner});    
+    await token.transfer(wallets[9], 100, {from: wallets[7]}).should.be.fulfilled;
+    await token.transfer(wallets[9], 100, {from: wallets[8]}).should.be.rejectedWith(EVMRevert);
+    const balance = await token.balanceOf(wallets[9]);
+    assert.equal(balance, 100);
+  });
+
+  it('should unlock batch address accounts after crowdsale', async function () {
+    const owner = await crowdsale.owner();
+    await crowdsale.sendTransaction({value: ether(1), from: wallets[6]});
+    await crowdsale.sendTransaction({value: ether(1), from: wallets[7]});
+    await crowdsale.sendTransaction({value: ether(1), from: wallets[8]});
+    await crowdsale.finish({from: owner});
+    await token.unlockBatchOfAddressesAfterITO([wallets[6], wallets[7], wallets[8]], {from: owner});    
+    await token.transfer(wallets[9], 100, {from: wallets[6]}).should.be.fulfilled;
+    await token.transfer(wallets[9], 100, {from: wallets[7]}).should.be.fulfilled;
+    await token.transfer(wallets[9], 100, {from: wallets[8]}).should.be.fulfilled;
+    const balance = await token.balanceOf(wallets[9]);
+    assert.equal(balance, 300);
+  });
+
 }
