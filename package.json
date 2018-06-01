@@ -28,7 +28,8 @@
     "flatten-token": "./node_modules/.bin/truffle-flattener ./contracts/GeseToken.sol > ./deploy/GeseToken.sol",
     "flatten-callback": "./node_modules/.bin/truffle-flattener ./contracts/CallbackTest.sol > ./deploy/CallbackTest.sol",
     "flatten-tokendistributor": "./node_modules/.bin/truffle-flattener ./contracts/TokenDistributor.sol > ./deploy/TokenDistributor.sol",
-    "flatten-configurator": "./node_modules/.bin/truffle-flattener ./contracts/TestConfigurator.sol > ./deploy/TestConfigurator.sol"
+    "flatten-configurator": "./node_modules/.bin/truffle-flattener ./contracts/TestConfigurator.sol > ./deploy/TestConfigurator.sol",
+    "flatten-contracts": "./node_modules/.bin/truffle-flattener ./contracts/Configurator.sol > ./deploy/Contracts.sol"
   },
   "repository": {
     "type": "git",
