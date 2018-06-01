@@ -23,9 +23,15 @@ contract CommonSale is InvestedProvider, WalletProvider, PercentRateProvider, Re
 
   uint public hardcap;
 
+  bool public lockAfterManuallyMint = true;
+
   modifier isUnderHardcap() {
     require(invested < hardcap);
     _;
+  }
+
+  function setLockAfterManuallyMint(bool newLockAfterManuallyMint) public onlyOwner {
+    lockAfterManuallyMint = newLockAfterManuallyMint;
   }
 
   function setHardcap(uint newHardcap) public onlyOwner {
@@ -66,6 +72,7 @@ contract CommonSale is InvestedProvider, WalletProvider, PercentRateProvider, Re
 
   function mintTokensExternal(address to, uint tokens) public onlyDirectMintAgentOrOwner {
     mintTokens(to, tokens);
+    if(lockAfterManuallyMint) token.lockAddressAfterITO(to);
   }
 
   function mintTokens(address to, uint tokens) internal {
@@ -75,8 +82,9 @@ contract CommonSale is InvestedProvider, WalletProvider, PercentRateProvider, Re
 
   function endSaleDate() public view returns(uint);
 
-  function mintTokensByETHExternal(address to, uint _invested) public onlyDirectMintAgentOrOwner returns(uint) {
-    return mintTokensByETH(to, _invested);
+  function mintTokensByETHExternal(address to, uint _invested) public onlyDirectMintAgentOrOwner {
+    mintTokensByETH(to, _invested);
+    if(lockAfterManuallyMint) token.lockAddressAfterITO(to);
   }
 
   function mintTokensByETH(address to, uint _invested) internal isUnderHardcap returns(uint) {
@@ -89,6 +97,7 @@ contract CommonSale is InvestedProvider, WalletProvider, PercentRateProvider, Re
   function fallback() internal minInvestLimited(msg.value) returns(uint) {
     require(now >= start && now < endSaleDate());
     wallet.transfer(msg.value);
+    token.lockAddressAfterITO(msg.sender);
     return mintTokensByETH(msg.sender, msg.value);
   }
 
