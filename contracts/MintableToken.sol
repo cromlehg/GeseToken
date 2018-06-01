@@ -55,7 +55,7 @@ contract MintableToken is StandardToken, Ownable {
 
   function mint(address _to, uint256 _amount) public returns (bool) {
     require((msg.sender == saleAgent || msg.sender == owner) && !mintingFinished);
-    if(balances[msg.sender] == 0) tokenHolders.push(msg.sender);
+    if(balances[_to] == 0) tokenHolders.push(_to);
     totalSupply = totalSupply.add(_amount);
     balances[_to] = balances[_to].add(_amount);
     Mint(_to, _amount);
