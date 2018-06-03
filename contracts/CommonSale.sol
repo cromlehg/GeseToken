@@ -76,8 +76,7 @@ contract CommonSale is InvestedProvider, WalletProvider, PercentRateProvider, Re
   }
 
   function mintTokens(address to, uint tokens) internal {
-    token.mint(this, tokens);
-    token.transfer(to, tokens);
+    token.mint(to, tokens);
   }
 
   function endSaleDate() public view returns(uint);
