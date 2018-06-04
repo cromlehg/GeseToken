@@ -74,4 +74,12 @@ export default function (Token, Crowdsale, wallets) {
     assert.equal(balance, 100);
   });
 
+  it('should lock tokens after finish all crowdsales', async function () {
+    const owner = await crowdsale.owner();
+    await crowdsale.sendTransaction({value: this.softcap, from: wallets[9]});
+    await crowdsale.finish({from: owner});
+    await token.finishMinting({from: owner});
+    await token.transfer(wallets[3], 100, {from: wallets[9]}).should.be.rejectedWith(EVMRevert);
+  });
+
 }
