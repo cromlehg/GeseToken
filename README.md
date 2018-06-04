@@ -265,7 +265,7 @@ _Milestones_
 * 1 ETH => 7315 tokens, gas = 133973
 https://ropsten.etherscan.io/tx/0x7718be88515d972522c717522b1583b2b34527a6c48ab159eac1046f6becbe07
 
-* transfer 30 tokens => rejected txn, gas = 
+* transfer 30 tokens => rejected txn, gas = 25224
 https://ropsten.etherscan.io/tx/0x2ef77704ab81c53b1fe5a96504dad796459078fb972c8112d3ab9bfab96701f5
 
 * transfer 30 tokens (account is unlocked now), gas = 39185
