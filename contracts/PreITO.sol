@@ -37,6 +37,7 @@ contract PreITO is NextSaleAgentFeature, SoftcapFeature, ReferersCommonSale {
 
   function fallback() internal minInvestLimited(msg.value) returns(uint) {
     require(now >= start && now < endSaleDate());
+    token.lockAddressAfterITO(msg.sender);
     uint tokens = mintTokensByETH(msg.sender, msg.value);
     if(msg.value >= referalsMinInvestLimit) {
       address referer = getInputAddress();
