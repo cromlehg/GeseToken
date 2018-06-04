@@ -62,12 +62,12 @@ contract TestConfigurator is Ownable {
 
   function deploy() public onlyOwner {
     preITO.setWallet(0x8fD94be56237EA9D854B23B78615775121Dd1E82);
-    preITO.setStart(1522108800);
-    preITO.setPeriod(15);
+    preITO.setStart(1528070400);
+    preITO.setPeriod(14);
     preITO.setPrice(786700);
     preITO.setMinInvestedLimit(100000000000000000);
-    preITO.setHardcap(3818000000000000000000);
-    preITO.setSoftcap(3640000000000000000000);
+    preITO.setHardcap(3000000000000000000);
+    preITO.setSoftcap(1500000000000000000);
     preITO.setReferalsMinInvestLimit(100000000000000000);
     preITO.setRefererPercent(5);
     preITO.setToken(token);
@@ -75,7 +75,7 @@ contract TestConfigurator is Ownable {
     token.setSaleAgent(preITO);
     preITO.setNextSaleAgent(ito);
 
-    ito.setStart(1522108800);
+    ito.setStart(1528070400);
     ito.addMilestone(5, 33);
     ito.addMilestone(5, 18);
     ito.addMilestone(5, 11);
@@ -88,7 +88,7 @@ contract TestConfigurator is Ownable {
     ito.setBountyTokensWallet(0x8Ba7Aa817e5E0cB27D9c146A452Ea8273f8EFF29);
     ito.setAdvisorsTokensWallet(0x24a7774d0eba02846580A214eeca955214cA776C);
     ito.setTeamTokensWallet(0xaa8ed6878a202eF6aFC518a64D2ccB8D73f1f2Ca);
-    ito.setReservedTokensWallet(0xaa8ed6878a202eF6aFC518a64D2ccB8D73f1f2Ca);
+    ito.setReservedTokensWallet(0x093A89bDb5CE905fecb6272ff3ac92f53350a79A);
     ito.setBountyTokensPercent(5);
     ito.setAdvisorsTokensPercent(10);
     ito.setTeamTokensPercent(10);
