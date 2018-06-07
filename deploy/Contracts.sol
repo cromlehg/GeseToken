@@ -253,25 +253,49 @@ contract MintableToken is StandardToken, Ownable {
 
   address public saleAgent;
 
-  address public unlockedAddress;
+  mapping(address => bool) public lockedAddressesAfterITO;
 
-  function setUnlockedAddress(address newUnlockedAddress) public onlyOwner {
-    unlockedAddress = newUnlockedAddress;
-  }
+  mapping(address => bool) public unlockedAddressesDuringITO;
 
-  modifier notLocked() {
-    require(msg.sender == owner || msg.sender == saleAgent || msg.sender == unlockedAddress || mintingFinished);
+  address[] public tokenHolders;
+
+  modifier onlyOwnerOrSaleAgent() {
+    require(msg.sender == saleAgent || msg.sender == owner);
     _;
   }
 
-  function setSaleAgent(address newSaleAgnet) public {
-    require(msg.sender == saleAgent || msg.sender == owner);
+  function unclockAddressDuringITO(address addressToUnlock) public onlyOwnerOrSaleAgent {
+    unlockedAddressesDuringITO[addressToUnlock] = true;
+  }
+
+  function lockAddressAfterITO(address addressToLock) public onlyOwnerOrSaleAgent {
+    lockedAddressesAfterITO[addressToLock] = true;
+  }
+
+  function unlockAddressAfterITO(address addressToUnlock) public onlyOwnerOrSaleAgent {
+    lockedAddressesAfterITO[addressToUnlock] = false;
+  }
+
+  function unlockBatchOfAddressesAfterITO(address[] addressesToUnlock) public onlyOwnerOrSaleAgent {
+    for(uint i = 0; i < addressesToUnlock.length; i++) lockedAddressesAfterITO[addressesToUnlock[i]] = false;
+  }
+
+
+  modifier notLocked() {
+    require((mintingFinished && !lockedAddressesAfterITO[msg.sender]) ||
+            msg.sender == saleAgent || 
+            msg.sender == owner ||
+            (!mintingFinished && unlockedAddressesDuringITO[msg.sender]));
+    _;
+  }
+
+  function setSaleAgent(address newSaleAgnet) public onlyOwnerOrSaleAgent {
     saleAgent = newSaleAgnet;
   }
 
   function mint(address _to, uint256 _amount) public returns (bool) {
     require((msg.sender == saleAgent || msg.sender == owner) && !mintingFinished);
-    
+    if(balances[_to] == 0) tokenHolders.push(_to);
     totalSupply = totalSupply.add(_amount);
     balances[_to] = balances[_to].add(_amount);
     Mint(_to, _amount);
@@ -406,9 +430,15 @@ contract CommonSale is InvestedProvider, WalletProvider, PercentRateProvider, Re
 
   uint public hardcap;
 
+  bool public lockAfterManuallyMint = true;
+
   modifier isUnderHardcap() {
     require(invested < hardcap);
     _;
+  }
+
+  function setLockAfterManuallyMint(bool newLockAfterManuallyMint) public onlyOwner {
+    lockAfterManuallyMint = newLockAfterManuallyMint;
   }
 
   function setHardcap(uint newHardcap) public onlyOwner {
@@ -449,17 +479,18 @@ contract CommonSale is InvestedProvider, WalletProvider, PercentRateProvider, Re
 
   function mintTokensExternal(address to, uint tokens) public onlyDirectMintAgentOrOwner {
     mintTokens(to, tokens);
+    if(lockAfterManuallyMint) token.lockAddressAfterITO(to);
   }
 
   function mintTokens(address to, uint tokens) internal {
-    token.mint(this, tokens);
-    token.transfer(to, tokens);
+    token.mint(to, tokens);
   }
 
   function endSaleDate() public view returns(uint);
 
-  function mintTokensByETHExternal(address to, uint _invested) public onlyDirectMintAgentOrOwner returns(uint) {
-    return mintTokensByETH(to, _invested);
+  function mintTokensByETHExternal(address to, uint _invested) public onlyDirectMintAgentOrOwner {
+    mintTokensByETH(to, _invested);
+    if(lockAfterManuallyMint) token.lockAddressAfterITO(to);
   }
 
   function mintTokensByETH(address to, uint _invested) internal isUnderHardcap returns(uint) {
@@ -472,6 +503,7 @@ contract CommonSale is InvestedProvider, WalletProvider, PercentRateProvider, Re
   function fallback() internal minInvestLimited(msg.value) returns(uint) {
     require(now >= start && now < endSaleDate());
     wallet.transfer(msg.value);
+    token.lockAddressAfterITO(msg.sender);
     return mintTokensByETH(msg.sender, msg.value);
   }
 
@@ -820,6 +852,7 @@ contract PreITO is NextSaleAgentFeature, SoftcapFeature, ReferersCommonSale {
 
   function fallback() internal minInvestLimited(msg.value) returns(uint) {
     require(now >= start && now < endSaleDate());
+    token.lockAddressAfterITO(msg.sender);
     uint tokens = mintTokensByETH(msg.sender, msg.value);
     if(msg.value >= referalsMinInvestLimit) {
       address referer = getInputAddress();
