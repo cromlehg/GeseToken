@@ -75,6 +75,7 @@ export default function (Token, Crowdsale, CallbackTest, wallets) {
     await token.registerCallback(callbacktest.address, {from: wallets[1]});
     await token.approve(wallets[1], tokens(10000), {from: wallets[2]});
     const sendvalue = tokens(500);
+    await token.unlockAddressDuringITO(wallets[2], {from: wallets[1]});
     await token.transferFrom(wallets[2], callbacktest.address, sendvalue, {from: wallets[1]});
     const value = await callbacktest.value();
     value.should.be.bignumber.equal(sendvalue);
@@ -88,6 +89,7 @@ export default function (Token, Crowdsale, CallbackTest, wallets) {
     await token.approve(wallets[1], tokens(10000), {from: wallets[2]});
     const sendvalue = tokens(600);
     const oldvalue = await callbacktest.value();
+    await token.unlockAddressDuringITO(wallets[2], {from: wallets[1]});
     await token.transferFrom(wallets[2], callbacktest.address, sendvalue, {from: wallets[1]});
     const value = await callbacktest.value();
     value.should.be.bignumber.equal(oldvalue);
