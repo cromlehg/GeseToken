@@ -264,7 +264,7 @@ contract MintableToken is StandardToken, Ownable {
     _;
   }
 
-  function unclockAddressDuringITO(address addressToUnlock) public onlyOwnerOrSaleAgent {
+  function unlockAddressDuringITO(address addressToUnlock) public onlyOwnerOrSaleAgent {
     unlockedAddressesDuringITO[addressToUnlock] = true;
   }
 
@@ -281,11 +281,11 @@ contract MintableToken is StandardToken, Ownable {
   }
 
 
-  modifier notLocked() {
-    require((mintingFinished && !lockedAddressesAfterITO[msg.sender]) ||
-            msg.sender == saleAgent || 
-            msg.sender == owner ||
-            (!mintingFinished && unlockedAddressesDuringITO[msg.sender]));
+  modifier notLocked(address sender) {
+    require((mintingFinished && !lockedAddressesAfterITO[sender]) ||
+            sender == saleAgent || 
+            sender == owner ||
+            (!mintingFinished && unlockedAddressesDuringITO[sender]));
     _;
   }
 
@@ -313,11 +313,11 @@ contract MintableToken is StandardToken, Ownable {
     return true;
   }
 
-  function transfer(address _to, uint256 _value) public notLocked returns (bool) {
+  function transfer(address _to, uint256 _value) public notLocked(msg.sender) returns (bool) {
     return super.transfer(_to, _value);
   }
 
-  function transferFrom(address from, address to, uint256 value) public notLocked returns (bool) {
+  function transferFrom(address from, address to, uint256 value) public notLocked(from) returns (bool) {
     return super.transferFrom(from, to, value);
   }
 
