@@ -24,7 +24,7 @@ contract MintableToken is StandardToken, Ownable {
     _;
   }
 
-  function unclockAddressDuringITO(address addressToUnlock) public onlyOwnerOrSaleAgent {
+  function unlockAddressDuringITO(address addressToUnlock) public onlyOwnerOrSaleAgent {
     unlockedAddressesDuringITO[addressToUnlock] = true;
   }
 

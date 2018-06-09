@@ -72,7 +72,7 @@ export default function (Token, accounts) {
   it('should transfer from unlocked address accounts if minting is not finished', async function () {
     await token.mint(accounts[2], 100, {from: accounts[0]});
     await token.mint(accounts[3], 100, {from: accounts[0]});
-    await token.unclockAddressDuringITO(accounts[2], {from: accounts[0]});
+    await token.unlockAddressDuringITO(accounts[2], {from: accounts[0]});
     await token.transfer(accounts[4], 100, {from: accounts[2]}).should.be.fulfilled;
     await assertRevert(token.transfer(accounts[4], 100, {from: accounts[3]}));
     const balance = await token.balanceOf(accounts[4]);
@@ -84,7 +84,7 @@ export default function (Token, accounts) {
     await token.mint(accounts[3], 100, {from: accounts[0]});
     await token.approve(accounts[2], 100, {from: accounts[2]});
     await token.approve(accounts[3], 100, {from: accounts[3]});
-    await token.unclockAddressDuringITO(accounts[2], {from: accounts[0]});
+    await token.unlockAddressDuringITO(accounts[2], {from: accounts[0]});
     await token.transferFrom(accounts[2], accounts[4], 100, {from: accounts[2]}).should.be.fulfilled;
     await assertRevert(token.transferFrom(accounts[3], accounts[4], 100, {from: accounts[3]}));
     const balance = await token.balanceOf(accounts[4]);

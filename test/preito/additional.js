@@ -67,7 +67,7 @@ export default function (Token, Crowdsale, wallets) {
     const owner = await crowdsale.owner();
     await crowdsale.sendTransaction({value: ether(1), from: wallets[7]});
     await crowdsale.sendTransaction({value: ether(1), from: wallets[8]});
-    await token.unclockAddressDuringITO(wallets[7], {from: owner});    
+    await token.unlockAddressDuringITO(wallets[7], {from: owner});    
     await token.transfer(wallets[9], 100, {from: wallets[7]}).should.be.fulfilled;
     await token.transfer(wallets[9], 100, {from: wallets[8]}).should.be.rejectedWith(EVMRevert);
     const balance = await token.balanceOf(wallets[9]);
