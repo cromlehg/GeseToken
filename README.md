@@ -84,14 +84,14 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Softcap_                     : 3640 ETH
 * _Period_                      : 14 days
 * _Start_                       : 26 Jun 2018 00:00:00 GMT
-* _Wallet_                      : 
+* _Wallet_                      : 0x1B139Ad79ED5F69ca4545EE9c4F1C774FbEc99Fe
 
 #### ITO
 * _Minimal insvested limit_     : 0.1 ETH
 * _Base price_                  : 1 ETH = 5500 Tokens
 * _Hardcap_                     : 49 090 ETH
 * _Start_                       : 05 Sep 2018 00:00:00 GMT
-* _Wallet_                      : 
+* _Wallet_                      : 0x1B139Ad79ED5F69ca4545EE9c4F1C774FbEc99Fe
  
 ##### Milestones
 1. 5 days, bonus +33%
