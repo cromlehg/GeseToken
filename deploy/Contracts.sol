@@ -882,7 +882,7 @@ contract Configurator is Ownable {
 
     preITO = new PreITO();
 
-    preITO.setWallet(0xa86780383E35De330918D8e4195D671140A60A74);
+    preITO.setWallet(0x1B139Ad79ED5F69ca4545EE9c4F1C774FbEc99Fe);
     preITO.setStart(1529971200);
     preITO.setPeriod(14);
     preITO.setPrice(786700);
@@ -897,7 +897,7 @@ contract Configurator is Ownable {
 
     ito = new ITO();
 
-    ito.setWallet(0x98882D176234AEb736bbBDB173a8D24794A3b085);
+    ito.setWallet(0x1B139Ad79ED5F69ca4545EE9c4F1C774FbEc99Fe);
     ito.setStart(1536105600);
     ito.addMilestone(5, 33);
     ito.addMilestone(5, 18);
