@@ -14,40 +14,54 @@ To participate in the sale you will need an ethereum wallet supporting ERC20.
 If you do not already have one, we recommend using https://www.myetherwallet.com.
 
 1. Go to https://www.myetherwallet.com
-<details><summary>Screenshot</summary>
-![creating_a_wallet_01](images/creating_a_wallet_01.jpg)
-</details>
+  <details><summary>Screenshot</summary>
+
+  ![creating_a_wallet_01](images/creating_a_wallet_01.jpg)
+
+  </details><br>
 
 2. Enter a strong but easy to remember password. Do not forget it. Click the "Create New Wallet"
-<details><summary>Screenshot</summary>
-![creating_a_wallet_02](images/creating_a_wallet_02.jpg)
-</details>
+  <details><summary>Screenshot</summary>
+
+  ![creating_a_wallet_02](images/creating_a_wallet_02.jpg)
+
+  </details><br>
 
 3. Download your Keystore file & save this file to a USB drive.  
 Read the warning. If you understand it, click the "I understand. Continue" button.
-<details><summary>Screenshot</summary>
-![creating_a_wallet_03](images/creating_a_wallet_03.jpg)
-</details>
+  <details><summary>Screenshot</summary>
+
+  ![creating_a_wallet_03](images/creating_a_wallet_03.jpg)
+
+  </details><br>
 
 4. Print your paper wallet backup and/or carefully hand-write the private key on a piece of paper. Copy & paste your address into a text document somewhere.
-<details><summary>Screenshot</summary>
-![creating_a_wallet_04](images/creating_a_wallet_04.jpg)
-</details>
+  <details><summary>Screenshot</summary>
+
+  ![creating_a_wallet_04](images/creating_a_wallet_04.jpg)
+
+  </details><br>
 
 5. Click "View Wallet Info" to see information about your wallet.
-<details><summary>Screenshot</summary>
-![creating_a_wallet_05](images/creating_a_wallet_05.jpg)
-</details>
+  <details><summary>Screenshot</summary>
+
+  ![creating_a_wallet_05](images/creating_a_wallet_05.jpg)
+
+  </details><br>
 
 6. Click "Select wallet file", select Keystore file, enter password. Then click "Unlock".
-<details><summary>Screenshot</summary>
-![creating_a_wallet_06](images/creating_a_wallet_06.jpg)
-</details>
+  <details><summary>Screenshot</summary>
+
+  ![creating_a_wallet_06](images/creating_a_wallet_06.jpg)
+
+  </details><br>
 
 7. The address of your wallet will be displayed in the field "Your address"
-<details><summary>Screenshot</summary>
-![creating_a_wallet_07](images/creating_a_wallet_07.jpg)
-</details>
+  <details><summary>Screenshot</summary>
+
+  ![creating_a_wallet_07](images/creating_a_wallet_07.jpg)
+
+  </details><br>
 
 ## Buying ethereum
 To participate in the sale you will need an Ether (ETH).
@@ -71,30 +85,40 @@ If you are using MyEtherWallet, you need to do the following:
 1. Go to https://www.myetherwallet.com
 
 2. Click "Send Ether & Tokens"
-<details><summary>Screenshot</summary>
-![buying_tokens_01](images/buying_tokens_01.jpg)
-</details>
+  <details><summary>Screenshot</summary>
+
+  ![buying_tokens_01](images/buying_tokens_01.jpg)
+
+  </details><br>
 
 3. Select "Keystore / JSON File". Click "Select wallet file", enter password and click "Unlock".
-<details><summary>Screenshot</summary>
-![buying_tokens_02](images/buying_tokens_02.jpg)
-</details>
+  <details><summary>Screenshot</summary>
+
+  ![buying_tokens_02](images/buying_tokens_02.jpg)
+
+  </details><br>
 
 4. Enter 0xaCF62c626904a17244cA6eEfd31Bf6Eb06895A82 in the address field.  
 Enter the amount of ether which you want to exchange to tokens.
-<details><summary>Screenshot</summary>
-![buying_tokens_03](images/buying_tokens_03.jpg)
-</details>
+  <details><summary>Screenshot</summary>
+
+  ![buying_tokens_03](images/buying_tokens_03.jpg)
+
+  </details><br>
 
 5. Click "Generate transaction", click "Send transaction".
-<details><summary>Screenshot</summary>
-![buying_tokens_04](images/buying_tokens_04.jpg)
-</details>
+  <details><summary>Screenshot</summary>
+
+  ![buying_tokens_04](images/buying_tokens_04.jpg)
+
+  </details><br>
 
 6. In the window that appears, click "Yes, I am sure! Send transaction".
-<details><summary>Screenshot</summary>
-![buying_tokens_05](images/buying_tokens_05.jpg)
-</details>
+  <details><summary>Screenshot</summary>
+
+  ![buying_tokens_05](images/buying_tokens_05.jpg)
+
+  </details><br>
 
 ## Managing tokens
 To add tokens to your wallet, you need the following information:
@@ -105,21 +129,29 @@ To add tokens to your wallet, you need the following information:
 If you are using MyEtherWallet, you need to do the following:
 1. Go to https://www.myetherwallet.com
 2. Click "View Wallet Info"
-<details><summary>Screenshot</summary>
-![creating_a_wallet_01](images/creating_a_wallet_01.jpg)
-</details>
+  <details><summary>Screenshot</summary>
+
+  ![creating_a_wallet_01](images/creating_a_wallet_01.jpg)
+
+  </details><br>
 
 3. Select "Keystore / JSON File", click "Select wallet file", enter password and click "Unlock".
-<details><summary>Screenshot</summary>
-![creating_a_wallet_06](images/creating_a_wallet_06.jpg)
-</details>
+  <details><summary>Screenshot</summary>
+
+  ![creating_a_wallet_06](images/creating_a_wallet_06.jpg)
+
+  </details><br>
 
 4. In the right sidebar you will see "Token Balances" panel. Click "Add custom token".
-<details><summary>Screenshot</summary>
-![managing_tokens_03](images/managing_tokens_03.jpg)
-</details>
+  <details><summary>Screenshot</summary>
+
+  ![managing_tokens_03](images/managing_tokens_03.jpg)
+
+  </details><br>
 
 5. Enter token info and click "Save".
-<details><summary>Screenshot</summary>
-![managing_tokens_04](images/managing_tokens_04.jpg)
-</details>
+  <details><summary>Screenshot</summary>
+
+  ![managing_tokens_04](images/managing_tokens_04.jpg)
+
+  </details><br>
