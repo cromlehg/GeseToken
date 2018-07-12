@@ -123,7 +123,7 @@ Enter the amount of ether which you want to exchange to tokens.
 ## Managing tokens
 To add tokens to your wallet, you need the following information:
 * Token Contract Address - 0x083802265C0585A788df3C890fbb17D5362502b2
-* Token Symbol — Gese
+* Token Symbol — GSE
 * Decimals — 2
 
 If you are using MyEtherWallet, you need to do the following:
